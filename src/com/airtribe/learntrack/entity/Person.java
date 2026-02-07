@@ -4,6 +4,7 @@ public class Person {
     private Integer id;
     private String firstName;
     private String lastName;
+    private String email;
 
     public Person() {
 
@@ -33,10 +34,24 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     Person(String firstName, String lastName){
         this.firstName = firstName;
         this.lastName = lastName;
+
+    }
+
+    Person(String firstName, String lastName,String email){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
     }
 
     void displayName(){
@@ -49,6 +64,7 @@ public class Person {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

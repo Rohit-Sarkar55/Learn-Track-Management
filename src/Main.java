@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Student s = new Student("Rohit","Sarkar", "rohit@gmail.com");
         Student s1 = new Student("Rahul", "Smith", "rahul@gmail.com");
+        s1.setActive(false);
         System.out.println(s +"\n"+ s1);
 
 
