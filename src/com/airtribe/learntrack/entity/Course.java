@@ -7,13 +7,12 @@ public class Course {
     private String courseName;
     private String description;
     private int durationInWeeks;
-    private boolean active;
+    private boolean active=true;
 
-    public Course(String courseName, String description, int durationInWeeks, boolean active) {
+    public Course(String courseName, String description, int durationInWeeks) {
         this.courseName = courseName;
         this.description = description;
         this.durationInWeeks = durationInWeeks;
-        this.active = active;
         this.setId(IdGenerator.getNextCourseId());
     }
 
