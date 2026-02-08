@@ -1,4 +1,4 @@
 package com.airtribe.learntrack.service;
 
-public class EnrollmentService {
+public interface EnrollmentService {
 }
