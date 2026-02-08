@@ -46,5 +46,11 @@ public class Main {
         enrollmentService.completeEnrollment(1001);
         enrollmentService.cancelEnrollment(1003);
         enrollmentService.printAllEnrollments();
+
+        courseService.searchCourseWithCourseId(45);
+        enrollmentService.addEnrollment(1, 35);
+
+        service.searchStudentWithStudentId(7);
+
     }
 }

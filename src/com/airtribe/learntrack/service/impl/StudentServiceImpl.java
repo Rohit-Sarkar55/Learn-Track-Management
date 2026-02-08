@@ -1,6 +1,7 @@
 package com.airtribe.learntrack.service.impl;
 
 import com.airtribe.learntrack.entity.Student;
+import com.airtribe.learntrack.exception.EntityNotFoundException;
 import com.airtribe.learntrack.repository.StudentRepository;
 import com.airtribe.learntrack.service.StudentService;
 
@@ -39,6 +40,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student searchStudentWithStudentId(int studentId) {
-        return studentRepository.searchStudentById(studentId);
+        try {
+            return studentRepository.searchStudentById(studentId);
+        }catch (EntityNotFoundException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }

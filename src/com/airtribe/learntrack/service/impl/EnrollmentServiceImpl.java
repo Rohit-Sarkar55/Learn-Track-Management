@@ -1,9 +1,12 @@
 package com.airtribe.learntrack.service.impl;
 
+import com.airtribe.learntrack.constants.AppConstants;
 import com.airtribe.learntrack.entity.Course;
 import com.airtribe.learntrack.entity.Enrollment;
 import com.airtribe.learntrack.entity.Student;
 import com.airtribe.learntrack.enums.EnrollmentStatus;
+import com.airtribe.learntrack.exception.EntityNotFoundException;
+import com.airtribe.learntrack.exception.InvalidInputException;
 import com.airtribe.learntrack.repository.CourseRepository;
 import com.airtribe.learntrack.repository.EnrollmentRepository;
 import com.airtribe.learntrack.repository.StudentRepository;
@@ -29,10 +32,27 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         this.studentService = studentService;
     }
 
+    private boolean isEnrollmentPossible(Course c, Student s){
+        if(c != null && s!= null){
+            if(!c.isActive()) throw new InvalidInputException(AppConstants.COURSE_IS_INACTIVE);
+            if(!s.isActive()) throw new InvalidInputException(AppConstants.STUDENT_IS_INACTIVE);
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public void addEnrollment(int studentId, int courseId) {
-        Enrollment enrollment = new Enrollment(courseId, studentId, LocalDate.now(), EnrollmentStatus.ACTIVE);
-        this.enrollmentRepository.makeEnrollment(enrollment);
+        try {
+            Course c = courseService.searchCourseWithCourseId(courseId);
+            Student s = studentService.searchStudentWithStudentId(studentId);
+            if(isEnrollmentPossible(c,s)) {
+                Enrollment enrollment = new Enrollment(c.getId(), s.getId(), LocalDate.now(), EnrollmentStatus.ACTIVE);
+                this.enrollmentRepository.makeEnrollment(enrollment);
+            }
+        }catch (InvalidInputException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override

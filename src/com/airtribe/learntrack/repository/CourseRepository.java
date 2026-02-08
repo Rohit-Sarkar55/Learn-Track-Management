@@ -1,6 +1,8 @@
 package com.airtribe.learntrack.repository;
 
+import com.airtribe.learntrack.constants.AppConstants;
 import com.airtribe.learntrack.entity.Course;
+import com.airtribe.learntrack.exception.EntityNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,7 @@ public class CourseRepository {
         return courseRecord.stream()
                 .filter(course -> course.getId() == courseId)
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(()-> new EntityNotFoundException(AppConstants.COURSE_NOT_FOUND));
     }
 
     public List<Course> getAllCourses(){
