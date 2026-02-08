@@ -1,5 +1,6 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import com.airtribe.learntrack.constants.AppConstants;
 import com.airtribe.learntrack.entity.Course;
 import com.airtribe.learntrack.entity.Student;
 import com.airtribe.learntrack.exception.InvalidInputException;
@@ -12,6 +13,8 @@ import com.airtribe.learntrack.service.StudentService;
 import com.airtribe.learntrack.service.impl.CourseServiceImpl;
 import com.airtribe.learntrack.service.impl.EnrollmentServiceImpl;
 import com.airtribe.learntrack.service.impl.StudentServiceImpl;
+import com.airtribe.learntrack.ui.DisplayMenu;
+import com.airtribe.learntrack.ui.StudentManager;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -23,9 +26,9 @@ public class Main {
         StudentRepository repository = new StudentRepository();
 
 
-        StudentService service = new StudentServiceImpl(repository);
+        StudentService studentService = new StudentServiceImpl(new StudentRepository());
         CourseService courseService = new CourseServiceImpl(new CourseRepository());
-        EnrollmentService enrollmentService = new EnrollmentServiceImpl(new EnrollmentRepository(),service, courseService);
+        EnrollmentService enrollmentService = new EnrollmentServiceImpl(new EnrollmentRepository(),studentService, courseService);
 
         Student s = new Student("Rohit","Sarkar", "rohit@gmail.com");
         Student s1 = new Student("Rahul", "Smith", "rahul@gmail.com");
@@ -35,10 +38,10 @@ public class Main {
 
 
 
-        service.addStudent(s);
-        service.addStudent(s1);
-        service.removeStudent(2);
-        service.printAllStudent();
+        studentService.addStudent(s);
+        studentService.addStudent(s1);
+        studentService.removeStudent(2);
+        studentService.printAllStudent();
         courseService.addCourse(c1);
         courseService.addCourse(c2);
         courseService.printAllCourse();
@@ -54,17 +57,19 @@ public class Main {
         courseService.searchCourseWithCourseId(45);
         enrollmentService.addEnrollment(1, 35);
 
-        service.searchStudentWithStudentId(7);
+        studentService.searchStudentWithStudentId(7);
 
         boolean running = true;
         Scanner sc = new Scanner(System.in);
         while(running) {
+            DisplayMenu.mainMenu();
             System.out.println("Enter your choice ");
             try {
                 int choices = sc.nextInt();
                 switch (choices) {
                     case 1:
-                        System.out.println(1);
+                        StudentManager studentManager = new StudentManager(studentService,enrollmentService);
+                        studentManager.studentManagerMenu();
                         break;
                     case 2:
                         System.out.println(2);
@@ -72,16 +77,20 @@ public class Main {
                     case 3:
                         System.out.println(3);
                         break;
-                    default:
+                    case 4:
                         running = false;
+                        break;
+                    default:
+                        System.out.println("Invalid input type. Try again!!!");
                         break;
 
                 }
 
             }catch (InputMismatchException e){
-                System.out.println("Invalid input type. Try again!!!");
+                System.out.println(AppConstants.INPUT_MISMATCH_EXCEPTION);
                 sc.next();
             }
+
         }
         System.out.println("Thank You.............");
     }
