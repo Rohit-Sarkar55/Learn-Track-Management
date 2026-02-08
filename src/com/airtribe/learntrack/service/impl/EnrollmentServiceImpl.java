@@ -73,7 +73,8 @@ public class EnrollmentServiceImpl implements EnrollmentService {
             System.out.println("\nCourse Enrollments for " + student.getName());
             System.out.println("-------------------------------------------------------------------------------------------------------");
             System.out.printf(
-                    "| %-15s | %-30s | %-10s | %-8s | %-15s | %-10s |%n",
+                    "| %-15s | %-15s | %-30s | %-10s | %-8s | %-15s | %-10s |%n",
+                    "Enrollment Id",
                     "Course Name",
                     "Description",
                     "Duration",
@@ -85,7 +86,8 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
             courseEnrollmentMap.forEach((enrollment, course) -> {
                 System.out.printf(
-                        "| %-15s | %-30s | %-10s | %-8s | %-15s | %-10s |%n",
+                        "| %-15s | %-15s | %-30s | %-10s | %-8s | %-15s | %-10s |%n",
+                        enrollment.getId(),
                         course.getCourseName(),
                         course.getDescription(),
                         course.getDurationInWeeks(),

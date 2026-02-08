@@ -15,6 +15,7 @@ import com.airtribe.learntrack.service.impl.EnrollmentServiceImpl;
 import com.airtribe.learntrack.service.impl.StudentServiceImpl;
 import com.airtribe.learntrack.ui.CourseManager;
 import com.airtribe.learntrack.ui.DisplayMenu;
+import com.airtribe.learntrack.ui.EnrollmentManager;
 import com.airtribe.learntrack.ui.StudentManager;
 
 import java.util.InputMismatchException;
@@ -77,7 +78,8 @@ public class Main {
                         courseManager.courseManagerMenu();
                         break;
                     case 3:
-                        System.out.println(3);
+                        EnrollmentManager enrollmentManager = new EnrollmentManager(enrollmentService);
+                        enrollmentManager.enrollmentManagerMenu();
                         break;
                     case 4:
                         running = false;

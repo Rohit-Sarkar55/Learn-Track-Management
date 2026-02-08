@@ -2,6 +2,7 @@ package com.airtribe.learntrack.ui;
 
 import com.airtribe.learntrack.constants.AppConstants;
 import com.airtribe.learntrack.enums.CourseMenuOption;
+import com.airtribe.learntrack.enums.EnrollmentMenuOption;
 import com.airtribe.learntrack.enums.MenuOption;
 import com.airtribe.learntrack.enums.StudentMenuOption;
 
@@ -34,5 +35,12 @@ public class DisplayMenu {
         System.out.println("Press 4: " + StudentMenuOption.BACK);
     }
 
-    
+    public static void enrollmentMenu(){
+        System.out.println(">>>>>>>>>> "+  MenuOption.ENROLLMENT_MANAGER + " <<<<<<<<<<");
+        System.out.println("Press 1: " + EnrollmentMenuOption.MAKE_ENROLLMENT);
+        System.out.println("Press 2: " + EnrollmentMenuOption.VIEW_ENROLLMENT_FOR_A_STUDENT);
+        System.out.println("Press 3: " + EnrollmentMenuOption.COMPLETE_ENROLLMENT);
+        System.out.println("Press 4: " + EnrollmentMenuOption.CANCEL_ENROLLMENT);
+        System.out.println("Press 5: " + EnrollmentMenuOption.BACK);
+    }
 }
