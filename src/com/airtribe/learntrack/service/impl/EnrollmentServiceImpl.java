@@ -3,6 +3,7 @@ package com.airtribe.learntrack.service.impl;
 import com.airtribe.learntrack.entity.Course;
 import com.airtribe.learntrack.entity.Enrollment;
 import com.airtribe.learntrack.entity.Student;
+import com.airtribe.learntrack.enums.EnrollmentStatus;
 import com.airtribe.learntrack.repository.CourseRepository;
 import com.airtribe.learntrack.repository.EnrollmentRepository;
 import com.airtribe.learntrack.repository.StudentRepository;
@@ -30,7 +31,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
     @Override
     public void addEnrollment(int studentId, int courseId) {
-        Enrollment enrollment = new Enrollment(courseId, studentId, LocalDate.now(),"Active");
+        Enrollment enrollment = new Enrollment(courseId, studentId, LocalDate.now(), EnrollmentStatus.ACTIVE);
         this.enrollmentRepository.makeEnrollment(enrollment);
     }
 
@@ -77,5 +78,15 @@ public class EnrollmentServiceImpl implements EnrollmentService {
             System.out.println("-------------------------------------------------------------------------------------------------------");
 
         }
+    }
+
+    @Override
+    public void completeEnrollment(int enrollmentId) {
+        enrollmentRepository.changeEnrollmentStatus(enrollmentId,EnrollmentStatus.COMPLETED);
+    }
+
+    @Override
+    public void cancelEnrollment(int enrollmentId) {
+        enrollmentRepository.changeEnrollmentStatus(enrollmentId, EnrollmentStatus.CANCELLED);
     }
 }
