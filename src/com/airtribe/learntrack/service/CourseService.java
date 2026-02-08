@@ -6,5 +6,6 @@ public interface CourseService {
     void addCourse(Course course);
     void removeCourse(int courseId);
     void updateCourse();
-    void listAllCourse();
+    void printAllCourse();
+    Course searchCourseWithCourseId(int courseId);
 }

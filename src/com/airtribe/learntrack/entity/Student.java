@@ -38,7 +38,7 @@ public class Student extends Person{
     }
 
     @Override
-    void displayName() {
+    public void displayName() {
         System.out.println("The Name of the Student "+this.getId() + " is "+ this.getFirstName() + " "+ this.getLastName());
     }
 
@@ -49,8 +49,8 @@ public class Student extends Person{
                 ", firstName='" + this.getFirstName() + '\'' +
                 ", lastName='" + this.getLastName() + '\'' +
                 ", email='" + this.getEmail() + '\'' +
-                ", batch='" + batch + '\'' +
-                ", active='" + active +'\''+
+                ", batch='" + this.getBatch() + '\'' +
+                ", active='" +  '\''+ this.isActive() + '\'' +
                 '}';
     }
 }

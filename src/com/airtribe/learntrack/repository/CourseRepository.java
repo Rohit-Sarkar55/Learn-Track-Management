@@ -18,7 +18,7 @@ public class CourseRepository {
                 .orElse(null);
     }
 
-    public void printAllCourse(){
-        this.courseRecord.forEach(System.out::println);
+    public List<Course> getAllCourses(){
+        return this.courseRecord;
     }
 }

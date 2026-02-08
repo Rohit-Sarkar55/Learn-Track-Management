@@ -19,7 +19,8 @@ public class StudentRepository {
                 .orElse(null);
     }
 
-    public void printAllStudent(){
-        this.studentRecord.forEach(System.out::println);
+    public List<Student> getAllStudents()
+    {
+        return this.studentRecord;
     }
 }

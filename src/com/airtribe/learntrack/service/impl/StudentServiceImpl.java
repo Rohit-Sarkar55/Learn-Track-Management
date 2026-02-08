@@ -4,8 +4,6 @@ import com.airtribe.learntrack.entity.Student;
 import com.airtribe.learntrack.repository.StudentRepository;
 import com.airtribe.learntrack.service.StudentService;
 
-import java.util.List;
-
 public class StudentServiceImpl implements StudentService {
 
     private StudentRepository studentRepository;
@@ -23,7 +21,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void removeStudent(int studentId) {
-        Student student = this.studentRepository.searchStudentById(studentId);
+        Student student = searchStudentWithStudentId(studentId);
         if(student != null){
             student.setActive(false);
         }
@@ -35,7 +33,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void listAllStudent() {
-        this.studentRepository.printAllStudent();
+    public void printAllStudent() {
+        this.studentRepository.getAllStudents().forEach(System.out::println);
+    }
+
+    @Override
+    public Student searchStudentWithStudentId(int studentId) {
+        return studentRepository.searchStudentById(studentId);
     }
 }

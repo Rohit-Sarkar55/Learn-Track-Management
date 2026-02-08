@@ -58,6 +58,9 @@ public class Person {
         System.out.println("Name of the Person "+this.id + " is " + this.firstName + " " + this.lastName);
     }
 
+    public String getName(){
+        return this.firstName + " " + this.lastName;
+    }
     @Override
     public String toString() {
         return "Person{" +

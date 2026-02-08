@@ -19,7 +19,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void removeCourse(int courseId) {
-        Course course = this.courseRepository.searchCourseById(courseId);
+        Course course = searchCourseWithCourseId(courseId);
         if(course != null){
             course.setActive(false);
         }
@@ -31,7 +31,12 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void listAllCourse() {
-        this.courseRepository.printAllCourse();
+    public void printAllCourse() {
+        this.courseRepository.getAllCourses().forEach(System.out::println);
+    }
+
+    @Override
+    public Course searchCourseWithCourseId(int courseId) {
+        return this.courseRepository.searchCourseById(courseId);
     }
 }
