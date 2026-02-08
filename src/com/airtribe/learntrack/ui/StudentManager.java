@@ -68,31 +68,27 @@ public class StudentManager {
                 switch (choice) {
                     case 1:
                         addStudentUI();
-                        System.out.println(1);
                         break;
                     case 2:
                         removeStudentUI();
-                        System.out.println(2);
                         break;
                     case 3:
                         searchStudentByIdUI();
-                        System.out.println(3);
                         break;
                     case 4:
                         studentService.printAllStudent();
-                        System.out.println(3);
                         break;
                     case 5:
                         running = false;
                         break;
                     default:
-                        System.out.println("Invalid input type. Try again!!!");
+                        System.out.println(AppConstants.INPUT_MISMATCH_EXCEPTION);
                         break;
 
                 }
 
             }catch (InputMismatchException e){
-                System.out.println("Invalid input type. Try again!!!");
+                System.out.println(AppConstants.INPUT_MISMATCH_EXCEPTION);
                 sc.next();
             }
 

@@ -13,6 +13,7 @@ import com.airtribe.learntrack.service.StudentService;
 import com.airtribe.learntrack.service.impl.CourseServiceImpl;
 import com.airtribe.learntrack.service.impl.EnrollmentServiceImpl;
 import com.airtribe.learntrack.service.impl.StudentServiceImpl;
+import com.airtribe.learntrack.ui.CourseManager;
 import com.airtribe.learntrack.ui.DisplayMenu;
 import com.airtribe.learntrack.ui.StudentManager;
 
@@ -72,7 +73,8 @@ public class Main {
                         studentManager.studentManagerMenu();
                         break;
                     case 2:
-                        System.out.println(2);
+                        CourseManager courseManager = new CourseManager(courseService);
+                        courseManager.courseManagerMenu();
                         break;
                     case 3:
                         System.out.println(3);
@@ -81,7 +83,7 @@ public class Main {
                         running = false;
                         break;
                     default:
-                        System.out.println("Invalid input type. Try again!!!");
+                        System.out.println(AppConstants.INPUT_MISMATCH_EXCEPTION);
                         break;
 
                 }
