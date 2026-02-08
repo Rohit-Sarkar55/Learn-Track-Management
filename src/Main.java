@@ -2,6 +2,7 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import com.airtribe.learntrack.entity.Course;
 import com.airtribe.learntrack.entity.Student;
+import com.airtribe.learntrack.exception.InvalidInputException;
 import com.airtribe.learntrack.repository.CourseRepository;
 import com.airtribe.learntrack.repository.EnrollmentRepository;
 import com.airtribe.learntrack.repository.StudentRepository;
@@ -11,6 +12,9 @@ import com.airtribe.learntrack.service.StudentService;
 import com.airtribe.learntrack.service.impl.CourseServiceImpl;
 import com.airtribe.learntrack.service.impl.EnrollmentServiceImpl;
 import com.airtribe.learntrack.service.impl.StudentServiceImpl;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Main {
 
@@ -52,5 +56,33 @@ public class Main {
 
         service.searchStudentWithStudentId(7);
 
+        boolean running = true;
+        Scanner sc = new Scanner(System.in);
+        while(running) {
+            System.out.println("Enter your choice ");
+            try {
+                int choices = sc.nextInt();
+                switch (choices) {
+                    case 1:
+                        System.out.println(1);
+                        break;
+                    case 2:
+                        System.out.println(2);
+                        break;
+                    case 3:
+                        System.out.println(3);
+                        break;
+                    default:
+                        running = false;
+                        break;
+
+                }
+
+            }catch (InputMismatchException e){
+                System.out.println("Invalid input type. Try again!!!");
+                sc.next();
+            }
+        }
+        System.out.println("Thank You.............");
     }
 }
