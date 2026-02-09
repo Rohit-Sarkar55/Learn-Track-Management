@@ -3,11 +3,11 @@ package com.airtribe.learntrack.entity;
 import com.airtribe.learntrack.util.IdGenerator;
 
 public class Student extends Person{
-    private String email;
+    private String batch;
+    private boolean active = true;
 
     public Student(String fName, String lName, String email){
-        super(fName,lName);
-        this.email = email;
+        super(fName,lName,email);
         this.setId(IdGenerator.getNextStudentId());
     }
 
@@ -20,16 +20,25 @@ public class Student extends Person{
         this.setId(IdGenerator.getNextStudentId());
 
     }
-    public String getEmail() {
-        return email;
+
+    public String getBatch() {
+        return batch;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setBatch(String batch) {
+        this.batch = batch;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     @Override
-    void displayName() {
+    public void displayName() {
         System.out.println("The Name of the Student "+this.getId() + " is "+ this.getFirstName() + " "+ this.getLastName());
     }
 
@@ -39,7 +48,9 @@ public class Student extends Person{
                 "id=" + this.getId() +
                 ", firstName='" + this.getFirstName() + '\'' +
                 ", lastName='" + this.getLastName() + '\'' +
-                ", email='" + this.email + '\'' +
+                ", email='" + this.getEmail() + '\'' +
+                ", batch='" + this.getBatch() + '\'' +
+                ", active='" +  '\''+ this.isActive() + '\'' +
                 '}';
     }
 }
