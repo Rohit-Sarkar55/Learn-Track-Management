@@ -36,6 +36,8 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         if(c != null && s!= null){
             if(!c.isActive()) throw new InvalidInputException(AppConstants.COURSE_IS_INACTIVE);
             if(!s.isActive()) throw new InvalidInputException(AppConstants.STUDENT_IS_INACTIVE);
+            Enrollment enr = enrollmentRepository.getEnrollmentWithCourseIdAndStudentId(c.getId(), s.getId());
+            if(enr != null && enr.getStatus().equals(EnrollmentStatus.ACTIVE)) throw new InvalidInputException(AppConstants.DUPLICATE_ENROLLMENT_EXCEPTION);
             return true;
         }
         return false;

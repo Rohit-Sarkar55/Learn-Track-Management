@@ -8,4 +8,5 @@ public class AppConstants {
     public static final String STUDENT_IS_INACTIVE = "Student is inactive";
 
     public static final String INPUT_MISMATCH_EXCEPTION = "Invalid input type. Try again!!!";
+    public static final String DUPLICATE_ENROLLMENT_EXCEPTION = "Enrollment already exists";
 }

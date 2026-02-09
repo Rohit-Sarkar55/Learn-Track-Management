@@ -25,6 +25,11 @@ public class EnrollmentRepository {
                 .collect(Collectors.toList());
     }
 
+    public Enrollment getEnrollmentWithCourseIdAndStudentId(int courseId, int studentId){
+        return enrollments.stream().filter(enr->  (enr.getCourseId() == courseId)&& (enr.getStudentId() == studentId))
+                .findAny().orElse(null);
+    }
+
     public void changeEnrollmentStatus(int enrollmentId, EnrollmentStatus status){
         Enrollment enrollment = enrollments.stream().filter(enr -> enr.getId() == enrollmentId)
                 .findAny().orElse(null);

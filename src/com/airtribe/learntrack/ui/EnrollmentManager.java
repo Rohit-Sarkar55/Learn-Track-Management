@@ -19,7 +19,7 @@ public class EnrollmentManager {
 
     private void makeEnrollmentUI(){
         try {
-            sc.nextLine(); // clear any leftover newline
+            sc.nextLine();
 
             System.out.println("Enter your course Id: ");
             int courseId = sc.nextInt();
@@ -31,13 +31,13 @@ public class EnrollmentManager {
 
         } catch (InputMismatchException e) {
             System.out.println(AppConstants.INPUT_MISMATCH_EXCEPTION);
-            sc.next(); // clear invalid input
+            sc.next();
         }
     }
 
     private void viewEnrollmentsForAStudent(){
         try {
-            sc.nextLine(); // clear any leftover newline
+            sc.nextLine();
 
             System.out.println("Enter your student Id: ");
             int studentId = sc.nextInt();
@@ -46,7 +46,7 @@ public class EnrollmentManager {
 
         } catch (InputMismatchException e) {
             System.out.println(AppConstants.INPUT_MISMATCH_EXCEPTION);
-            sc.next(); // clear invalid input
+            sc.next();
         }
     }
 
@@ -66,7 +66,7 @@ public class EnrollmentManager {
 
     private void cancelEnrollment(){
         try {
-            sc.nextLine(); // clear any leftover newline
+            sc.nextLine();
 
             System.out.println("Enter your enrollment Id: ");
             int enrollmentId = sc.nextInt();
@@ -74,7 +74,7 @@ public class EnrollmentManager {
             enrollmentService.cancelEnrollment(enrollmentId);
         } catch (InputMismatchException e) {
             System.out.println(AppConstants.INPUT_MISMATCH_EXCEPTION);
-            sc.next(); // clear invalid input
+            sc.next();
         }
     }
 
@@ -97,6 +97,7 @@ public class EnrollmentManager {
                         break;
                     case 4:
                         cancelEnrollment();
+                        break;
                     case 5:
                         running = false;
                         break;
